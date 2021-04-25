@@ -188,7 +188,7 @@ Module['FS_createPath']("/", "music", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/data/menu.i16", "start": 0, "end": 154882, "audio": 0}, {"filename": "/data/menu.png", "start": 154882, "end": 252046, "audio": 0}, {"filename": "/data/logo.i16", "start": 252046, "end": 639246, "audio": 0}, {"filename": "/data/logo.raw", "start": 639246, "end": 649613, "audio": 0}, {"filename": "/music/bensound-birthofahero.raw", "start": 649613, "end": 2940971, "audio": 0}], "remote_package_size": 2940971, "package_uuid": "398a649e-2291-4db7-91aa-298e26d36191"});
+   loadPackage({"files": [{"filename": "/data/menu.i16", "start": 0, "end": 154882, "audio": 0}, {"filename": "/data/menu.png", "start": 154882, "end": 252046, "audio": 0}, {"filename": "/data/logo.i16", "start": 252046, "end": 639246, "audio": 0}, {"filename": "/data/logo.raw", "start": 639246, "end": 649613, "audio": 0}, {"filename": "/music/bensound-birthofahero.raw", "start": 649613, "end": 2940971, "audio": 0}], "remote_package_size": 2940971, "package_uuid": "9cd487a2-c56d-4f96-80d4-fcb56b132ee2"});
   
   })();
   
