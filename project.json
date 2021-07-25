@@ -1,0 +1,1738 @@
+{
+	"target": "wasm",
+	"lastBuffer": "src/main.cpp",
+	"audio": {
+		"rate": 10000
+	},
+	"PNGFlags": {
+		"ALL": [
+			"transparent=0",
+			"automatic=0",
+			"bpp=8",
+			"cpptype=inline constexpr u8",
+			"paloffset=0",
+			"binary=0",
+			"header=1",
+			"palette=${projectPath}/src/miloslav.h"
+		]
+	},
+	"libs": {
+		"linux": "Desktop",
+		"windows": "Desktop",
+		"darwin": "Desktop",
+		"ALL": [
+			{
+				"recurse": "${appPath}/femto/include"
+			}
+		],
+		"3DS": [
+			{
+				"recurse": "${appPath}/femto/libs",
+				"ignore": "ChaN"
+			},
+			{
+				"recurse": "${appPath}/femto/3ds"
+			}
+		],
+		"ESPBoy": [
+			{
+				"recurse": "${appPath}/femto/libs",
+				"ignore": "ChaN"
+			},
+			{
+				"recurse": "${appPath}/femto/espboy"
+			}
+		],
+		"wasm": [
+			{
+				"recurse": "${appPath}/femto/libs",
+				"ignore": "ChaN"
+			},
+			{
+				"recurse": "${appPath}/femto/sdl2"
+			}
+		],
+		"Pokitto": [
+			{
+				"recurse": "${appPath}/femto/libs"
+			},
+			{
+				"priority": 1,
+				"recurse": "${appPath}/PokittoLib/Pokitto/mbed-pokitto",
+				"ignore": "system_LPC11U6x.c|startup_LPC11U68.cpp|retarget.cpp"
+			},
+			{
+				"recurse": "${appPath}/femto/pokitto"
+			}
+		],
+		"Desktop": [
+			{
+				"recurse": "${appPath}/femto/libs",
+				"ignore": "ChaN"
+			},
+			{
+				"recurse": "${appPath}/PokittoLib/Pokitto/POKITTO_SIM/SDL2/include"
+			},
+			{
+				"recurse": "${appPath}/PokittoLib/Pokitto/POKITTO_SIM/SDL2/lib"
+			},
+			{
+				"recurse": "${appPath}/femto/sdl2"
+			}
+		]
+	},
+	"SFlags": {
+		"Pokitto": [
+			"-I${projectPath}",
+			"-mcpu=cortex-m0plus",
+			"-mthumb"
+		]
+	},
+	"CPPFlags": {
+		"DEBUG": [
+			"-Og",
+			"-g3",
+			"-ggdb"
+		],
+		"-RELEASE": [
+			"-Og",
+			"-g3",
+			"-ggdb"
+		],
+		"RELEASE": [
+			"-Os",
+			"-DSYNC_SERVER=\"localhost\"",
+			"-DSYNC_PORT=3000"
+		],
+		"ESPBoy": [
+			"-DNO_SD_CARD",
+			"-D__ets__",
+			"-DICACHE_FLASH",
+			"-U__STRICT_ANSI__",
+			"-I/home/fmanga/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/tools/sdk/include",
+			"-I/home/fmanga/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/tools/sdk/lwip2/include",
+			"-I/home/fmanga/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/tools/sdk/libc/xtensa-lx106-elf/include",
+			"-I/tmp/arduino_build_792527/core",
+			"-c",
+			"-w",
+			"-Os",
+			"-g",
+			"-mlongcalls",
+			"-mtext-section-literals",
+			"-fno-rtti",
+			"-falign-functions=4",
+			"-std=gnu++11",
+			"-MMD",
+			"-ffunction-sections",
+			"-fdata-sections",
+			"-fno-exceptions",
+			"-D__result_use_check",
+			"-D__alloc_align(x)",
+			"-DNEW_OOM_ABORT",
+			"-DNONOSDK22x_190703=1",
+			"-DF_CPU=80000000L",
+			"-DLWIP_OPEN_SRC",
+			"-DTCP_MSS=536",
+			"-DLWIP_FEATURES=1",
+			"-DLWIP_IPV6=0",
+			"-DARDUINO=10813",
+			"-DARDUINO_ESP8266_WEMOS_D1MINI",
+			"-DARDUINO_ARCH_ESP8266",
+			"-DARDUINO_BOARD=\"ESP8266_WEMOS_D1MINI\"",
+			"-DFLASHMODE_DIO",
+			"-DESP8266",
+			"-D_POSIX_THREADS",
+			"-D_POSIX_TIMEOUTS=0",
+			"-DTARGET_ESP8266",
+			"-DESPBOY",
+			"-DTARGET_ESPBOY",
+			"-DUSE_SCANLINE_RENDERER",
+			"-DHAVE_SCHED_H",
+			"-DPTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP=0",
+			"-I/home/fmanga/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/cores/esp8266",
+			"-I/home/fmanga/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/variants/d1_mini",
+			"-I/home/fmanga/Arduino/libraries/Adafruit_MCP23017_Arduino_Library",
+			"-I/home/fmanga/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/Wire",
+			"-I/home/fmanga/Arduino/libraries/Adafruit_MCP4725",
+			"-I/home/fmanga/Arduino/libraries/TFT_eSPI",
+			"-I/home/fmanga/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/SPI",
+			"-I/home/fmanga/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src"
+		],
+		"3DS": [
+			"-I${projectPath}",
+			"-DTARGET_SDL1",
+			"-DTARGET_3DS",
+			"-DSCREEN_WIDTH=400",
+			"-DSCREEN_HEIGHT=240",
+			"-DSCREEN_565",
+			"-DUSE_SCANLINE_RENDERER",
+			"-DARM11",
+			"-D_3DS",
+			"-std=gnu++17",
+			"-fsigned-char",
+			"-fno-rtti",
+			"-fexceptions",
+			"-I${devkitpro}/portlibs/3ds/include/SDL",
+			"-D_GNU_SOURCE=1",
+			"-I${devkitpro}/libctru/include",
+			"-Wno-pointer-arith",
+			"-Wno-unused-but-set-variable",
+			"-Wno-unused-function",
+			"-Wunused-variable",
+			"-MMD",
+			"-mword-relocations",
+			"-ffunction-sections",
+			"-fdata-sections",
+			"-march=armv6k",
+			"-mtune=mpcore",
+			"-mfloat-abi=hard",
+			"-mtp=soft",
+			"-c"
+		],
+		"wasm": [
+			"-s",
+			"USE_SDL=2",
+			"-s",
+			"USE_PTHREADS=0",
+			"-s",
+			"WASM=1",
+			"-s",
+			"EXPORTED_FUNCTIONS=['_main']",
+			"-s",
+			"EXTRA_EXPORTED_RUNTIME_METHODS=[\"ccall\"]",
+			"-s",
+			"ASSERTIONS=1",
+			"-I${projectPath}",
+			"-DPROJECT_NAME=\"${projectName}\"",
+			"-DTARGET_SDL2",
+			"-D_x_SCREEN_WIDTH=320",
+			"-D_x_SCREEN_HEIGHT=240",
+			"-DSCREEN_WIDTH=220",
+			"-DSCREEN_HEIGHT=176",
+			"-D_y_SCREEN_WIDTH=440",
+			"-D_y_SCREEN_HEIGHT=352",
+			"-DSCREEN_565",
+			"-DUSE_SCANLINE_RENDERER",
+			"-DNO_FLOAT_",
+			"-std=gnu++17",
+			"-fsigned-char",
+			"-fno-rtti",
+			"-Wno-pointer-arith",
+			"-Wno-unused-but-set-variable",
+			"-Wunused-variable",
+			"-Wno-unused-function",
+			"-MMD",
+			"-c"
+		],
+		"Pokitto": [
+			"-DPOKITTO_CLASSIC",
+			"-D_OSCT=2",
+			"-I${projectPath}",
+			"-fno-rtti",
+			"-Wno-pointer-arith",
+			"-c",
+			"-fno-exceptions",
+			"-fno-builtin",
+			"-funsigned-char",
+			"-ffunction-sections",
+			"-fdata-sections",
+			"-MMD",
+			"-fno-delete-null-pointer-checks",
+			"-fomit-frame-pointer",
+			"-mcpu=cortex-m0plus",
+			"-mthumb",
+			"-Wno-psabi",
+			"-Wno-conversion-null",
+			"-Wno-narrowing",
+			"-Wno-write-strings",
+			"-Wno-unused-function",
+			"-DNO_FLOAT",
+			"-DTARGET_LPC11U68",
+			"-D__MBED__=1",
+			"-DDEVICE_I2CSLAVE=1",
+			"-DTARGET_LIKE_MBED",
+			"-DTARGET_NXP",
+			"-D__MBED_CMSIS_RTOS_CM",
+			"-DDEVICE_RTC=1",
+			"-DTOOLCHAIN_object",
+			"-D__CMSIS_RTOS",
+			"-DTOOLCHAIN_GCC",
+			"-DTARGET_CORTEX_M",
+			"-DTARGET_M0P",
+			"-DTARGET_UVISOR_UNSUPPORTED",
+			"-DDEVICE_SERIAL=1",
+			"-DDEVICE_INTERRUPTIN=1",
+			"-DTARGET_LPCTarget",
+			"-DTARGET_CORTEX",
+			"-DDEVICE_I2C=1",
+			"-D__CORTEX_M0PLUS",
+			"-DTARGET_FF_ARDUINO",
+			"-DTARGET_RELEASE",
+			"-DMBED_BUILD_TIMESTAMP=1526394586.66",
+			"-DARM_MATH_CM0PLUS",
+			"-DTARGET_LPC11U6X",
+			"-DDEVICE_SLEEP=1",
+			"-DTOOLCHAIN_GCC_ARM",
+			"-DDEVICE_SPI=1",
+			"-DDEVICE_ANALOGIN=1",
+			"-DDEVICE_PWMOUT=1",
+			"-DTARGET_LIKE_CORTEX_M0"
+		],
+		"Desktop": [
+			"-I${projectPath}",
+			"-DPROJECT_NAME=\"${projectName}\"",
+			"-DTARGET_SDL2",
+			"-DSCREEN_WIDTH=220",
+			"-DSCREEN_HEIGHT=176",
+			"-DSCREEN_565",
+			"-DPIXEL_SIZE=2",
+			"-DNO_FLOAT_",
+			"-DUSE_SCANLINE_RENDERER",
+			"-Wall",
+			"-std=gnu++17",
+			"-fsigned-char",
+			"-fno-rtti",
+			"-Wno-pointer-arith",
+			"-Wno-unused-but-set-variable",
+			"-Wno-unused-variable",
+			"-Wno-unused-function",
+			"-c",
+			"-fno-builtin",
+			"-ffunction-sections",
+			"-fdata-sections",
+			"-funsigned-char",
+			"-MMD",
+			"-fno-delete-null-pointer-checks"
+		],
+		"ALL": [
+			"-std=gnu++17"
+		],
+		"linux": {
+			"extend": "Desktop",
+			"flags": [
+				"-DPROJ_LINUX=1",
+				"-D_REENTRANT"
+			]
+		},
+		"windows": "Desktop"
+	},
+	"CFlags": {
+		"DEBUG": [
+			"-Og",
+			"-g3",
+			"-ggdb"
+		],
+		"-RELEASE": [
+			"-Og",
+			"-g3",
+			"-ggdb"
+		],
+		"RELEASE": [
+			"-Os"
+		],
+		"3DS": [
+			"-I${projectPath}",
+			"-DTARGET_SDL1",
+			"-DTARGET_3DS",
+			"-DSCREEN_WIDTH=400",
+			"-DSCREEN_HEIGHT=240",
+			"-DSCREEN_565",
+			"-DUSE_SCANLINE_RENDERER",
+			"-DARM11",
+			"-D_3DS",
+			"-std=gnu++17",
+			"-fsigned-char",
+			"-fno-rtti",
+			"-fexceptions",
+			"-I${devkitpro}/portlibs/3ds/include/SDL",
+			"-D_GNU_SOURCE=1",
+			"-I${devkitpro}/libctru/include",
+			"-Wno-pointer-arith",
+			"-Wno-unused-but-set-variable",
+			"-Wunused-variable",
+			"-MMD",
+			"-mword-relocations",
+			"-ffunction-sections",
+			"-fdata-sections",
+			"-march=armv6k",
+			"-mtune=mpcore",
+			"-mfloat-abi=hard",
+			"-mtp=soft",
+			"-c"
+		],
+		"Pokitto": [
+			"-D_OSCT=2",
+			"-I${projectPath}",
+			"-Wno-pointer-arith",
+			"-c",
+			"-fno-exceptions",
+			"-fno-builtin",
+			"-ffunction-sections",
+			"-fdata-sections",
+			"-funsigned-char",
+			"-MMD",
+			"-fno-delete-null-pointer-checks",
+			"-fomit-frame-pointer",
+			"-mcpu=cortex-m0plus",
+			"-mthumb",
+			"-Wno-psabi",
+			"-Wwrite-strings",
+			"-DTARGET_LPC11U68",
+			"-D__MBED__=1",
+			"-DDEVICE_I2CSLAVE=1",
+			"-DTARGET_LIKE_MBED",
+			"-DTARGET_NXP",
+			"-D__MBED_CMSIS_RTOS_CM",
+			"-DDEVICE_RTC=1",
+			"-DTOOLCHAIN_object",
+			"-D__CMSIS_RTOS",
+			"-DTOOLCHAIN_GCC",
+			"-DTARGET_CORTEX_M",
+			"-DTARGET_M0P",
+			"-DTARGET_UVISOR_UNSUPPORTED",
+			"-DDEVICE_SERIAL=1",
+			"-DDEVICE_INTERRUPTIN=1",
+			"-DTARGET_LPCTarget",
+			"-DTARGET_CORTEX",
+			"-DDEVICE_I2C=1",
+			"-D__CORTEX_M0PLUS",
+			"-DTARGET_FF_ARDUINO",
+			"-DTARGET_RELEASE",
+			"-DMBED_BUILD_TIMESTAMP=1526394586.66",
+			"-DARM_MATH_CM0PLUS",
+			"-DTARGET_LPC11U6X",
+			"-DDEVICE_SLEEP=1",
+			"-DTOOLCHAIN_GCC_ARM",
+			"-DDEVICE_SPI=1",
+			"-DDEVICE_ANALOGIN=1",
+			"-DDEVICE_PWMOUT=1",
+			"-DTARGET_LIKE_CORTEX_M0"
+		],
+		"Desktop": [
+			"-I${projectPath}",
+			"-DPOK_SIM",
+			"-Wall",
+			"-fsigned-char",
+			"-DPOK_SIM",
+			"-Wno-pointer-arith",
+			"-c",
+			"-fno-builtin",
+			"-ffunction-sections",
+			"-fdata-sections",
+			"-funsigned-char",
+			"-MMD",
+			"-fno-delete-null-pointer-checks"
+		],
+		"ALL": [],
+		"linux": "Desktop",
+		"windows": "Desktop",
+		"darwin": "Desktop"
+	},
+	"GDBFlags": {
+		"Pokitto": [
+			"${projectPath}/${projectName}.elf"
+		]
+	},
+	"emuFlags": {
+		"3DS": [
+			"${projectPath}/${projectName}.elf"
+		],
+		"Pokitto": [
+			"${projectPath}/${projectName}.bin"
+		]
+	},
+	"ELF2BINFlags": {
+		"Pokitto": [
+			"-O",
+			"binary",
+			"${projectPath}/${projectName}.elf",
+			"${projectPath}/${projectName}.bin"
+		]
+	},
+	"LDFlags": {
+		"RELEASE": [
+			"-Os"
+		],
+		"DEBUG": [
+			"-Og",
+			"-g3",
+			"-ggdb"
+		],
+		"-RELEASE": [
+			"-Og",
+			"-g3",
+			"-ggdb"
+		],
+		"3DS": [
+			"-specs=3dsx.specs",
+			"-g",
+			"-march=armv6k",
+			"-mtune=mpcore",
+			"-mfloat-abi=hard",
+			"-mtp=soft",
+			"-Wl,-Map,FemtoTemplate.map",
+			"$objectFiles",
+			"-L${devkitpro}/libctru/lib",
+			"-L${devkitpro}/portlibs/3ds/lib",
+			"-lSDL",
+			"-lSDLmain",
+			"-lcitro3d",
+			"-lz",
+			"-lcitro3d",
+			"-lctru",
+			"-lm",
+			"-o",
+			"${projectPath}/${projectName}.elf"
+		],
+		"ESPBoy": [
+			"-fno-exceptions",
+			"-DNEW_OOM_ABORT",
+			"-g",
+			"-w",
+			"-Os",
+			"-nostdlib",
+			"-Wl,--no-check-sections",
+			"-u",
+			"app_entry",
+			"-u",
+			"_printf_float",
+			"-u",
+			"_scanf_float",
+			"-Wl,-static",
+			"-L/home/fmanga/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/tools/sdk/lib",
+			"-L/home/fmanga/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/tools/sdk/lib/NONOSDK22x_190703",
+			"-L/home/fmanga/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/tools/sdk/ld",
+			"-L/home/fmanga/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/tools/sdk/libc/xtensa-lx106-elf/lib",
+			"-Teagle.flash.4m2m.ld",
+			"-Wl,--gc-sections",
+			"-Wl,--wrap,malloc",
+			"-Wl,--wrap,free",
+			"-Wl,-wrap,system_restart_local",
+			"-Wl,-wrap,spi_flash_read",
+			"-Wl,--start-group",
+			"$objectFiles",
+			"/tmp/arduino_build_792527/libraries/ESP8266WiFi/ESP8266WiFi.a",
+			"/tmp/arduino_cache_814948/core/core_44004482774f472bb8f3e5584ab019f6.a",
+			"-lhal",
+			"-lphy",
+			"-lpp",
+			"-lnet80211",
+			"-llwip2-536-feat",
+			"-lwpa",
+			"-lcrypto",
+			"-lmain",
+			"-lwps",
+			"-lbearssl",
+			"-laxtls",
+			"-lespnow",
+			"-lsmartconfig",
+			"-lairkiss",
+			"-lwpa2",
+			"-lstdc++",
+			"-lm",
+			"-lc",
+			"-lgcc",
+			"-Wl,--end-group",
+			"-L/tmp/arduino_build_792527",
+			"-o",
+			"${projectPath}/${projectName}.elf"
+		],
+		"wasm": [
+			"-lidbfs.js",
+			"-s",
+			"USE_SDL=2",
+			"-s",
+			"USE_PTHREADS=0",
+			"-s",
+			"WASM=1",
+			"-s",
+			"EXPORTED_FUNCTIONS=['_main']",
+			"-s",
+			"ASSERTIONS=1",
+			"-s",
+			"EXTRA_EXPORTED_RUNTIME_METHODS=[\"ccall\"]",
+			"--preload-file",
+			"${projectPath}/data@/data",
+			"--preload-file",
+			"${projectPath}/music@/music",
+			"$objectFiles",
+			"-o",
+			"${projectPath}/${projectName}.html"
+		],
+		"Pokitto": [
+			"-Wl,--gc-sections",
+			"-Wl,-n",
+			"--specs=nano.specs",
+			"-mcpu=cortex-m0plus",
+			"-mthumb",
+			"-Wl,--wrap,malloc",
+			"-Wl,--wrap,free",
+			"-Wl,--undefined=g_pfnVectors",
+			"-Wl,--undefined=boot",
+			"-T",
+			"${appPath}/PokittoLib/Pokitto/mbed-pokitto/targets/cmsis/TARGET_NXP/TARGET_LPC11U6X/TOOLCHAIN_GCC_ARM/TARGET_LPC11U68/LPC11U68.ld",
+			"--output",
+			"${projectPath}/${projectName}.elf",
+			"$objectFiles",
+			"-Wl,--start-group",
+			"-lstdc++",
+			"-lsupc++",
+			"-lm",
+			"-lc",
+			"-lgcc",
+			"-lnosys",
+			"-Wl,--end-group"
+		],
+		"linux": [
+			"$objectFiles",
+			"-lpthread",
+			"-lSDL2",
+			"-lSDL2_net",
+			"--output",
+			"${projectPath}/${projectName}"
+		],
+		"windows": [
+			"-static",
+			"-lmingw32",
+			"-L${appPath}/PokittoLib/Pokitto/POKITTO_SIM/SDL2/lib",
+			"-lSDL2main",
+			"-lSDL2",
+			"-lm",
+			"-ldinput8",
+			"-ldxguid",
+			"-ldxerr8",
+			"-luser32",
+			"-lgdi32",
+			"-lwinmm",
+			"-limm32",
+			"-lole32",
+			"-loleaut32",
+			"-lshell32",
+			"-lversion",
+			"-luuid",
+			"-lsetupapi",
+			"-static-libgcc",
+			"-mwindows",
+			"--output",
+			"${projectPath}/${projectName}.exe",
+			"$objectFiles"
+		]
+	},
+	"pipelines": {
+		"3DS": [
+			"img-to-c",
+			"compile-cpp",
+			"compile-ld",
+			"#${devkitpro}/tools/bin/3dsxtool ${projectPath}/${projectName}.elf ${projectPath}/${projectName}.3dsx",
+			"'#${devkitpro}/tools/bin/3dslink ${projectPath}/${projectName}.3dsx"
+		],
+		"ESPBoy": [
+			"img-to-c",
+			"compile-cpp",
+			"compile-ld"
+		],
+		"wasm": "Desktop",
+		"Pokitto": [
+			"img-to-c",
+			"compile-cpp",
+			"compile-ld",
+			"compile-bin",
+			"make-img"
+		],
+		"Desktop": [
+			"img-to-c",
+			"compile-cpp",
+			"compile-ld"
+		],
+		"linux": "Desktop",
+		"windows": "Desktop"
+	},
+	"meta": {
+		"Armadillo-save.zip": {},
+		"Armadillo.bin": {},
+		"Armadillo.zip": {},
+		"Makefile": {},
+		"TASArmada": {},
+		"TASArmada.3dsx": {},
+		"TASArmada.bin": {},
+		"TASArmada.elf": {},
+		"TASArmada.data": {},
+		"TASArmada.html": {},
+		"TASArmada.js": {},
+		"TASArmada.wasm": {},
+		"credits.txt": {},
+		"data": {
+			"sdcard": true
+		},
+		"db.bin": {},
+		"gensystem.js": {},
+		"img-src": {},
+		"index.html": {},
+		"make.log": {},
+		"meshes": {},
+		"music": {
+			"sdcard": true
+		},
+		"playerShip.data": {},
+		"project.json": {},
+		"scripts": {},
+		"server": {},
+		"sound": {},
+		"src": {},
+		"data/Armadillo.sav": {},
+		"data/ArmadilloWorld.sav": {},
+		"data/level_up.raw": {},
+		"data/logo.i16": {},
+		"data/logo.raw": {},
+		"data/menu.i16": {},
+		"data/menu.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"bpp=16",
+				"binary=1"
+			]
+		},
+		"data/mission_1.i16": {},
+		"data/mission_2.i16": {},
+		"data/p0.i8": {},
+		"data/p1.i8": {},
+		"data/p10.i8": {},
+		"data/p11.i8": {},
+		"data/p12.i8": {},
+		"data/p13.i8": {},
+		"data/p14.i8": {},
+		"data/p15.i8": {},
+		"data/p16.i8": {},
+		"data/p17.i8": {},
+		"data/p18.i8": {},
+		"data/p19.i8": {},
+		"data/p2.i8": {},
+		"data/p20.i8": {},
+		"data/p21.i8": {},
+		"data/p22.i8": {},
+		"data/p23.i8": {},
+		"data/p24.i8": {},
+		"data/p25.i8": {},
+		"data/p26.i8": {},
+		"data/p27.i8": {},
+		"data/p28.i8": {},
+		"data/p29.i8": {},
+		"data/p3.i8": {},
+		"data/p30.i8": {},
+		"data/p31.i8": {},
+		"data/p32.i8": {},
+		"data/p33.i8": {},
+		"data/p34.i8": {},
+		"data/p35.i8": {},
+		"data/p36.i8": {},
+		"data/p37.i8": {},
+		"data/p38.i8": {},
+		"data/p39.i8": {},
+		"data/p4.i8": {},
+		"data/p40.i8": {},
+		"data/p41.i8": {},
+		"data/p42.i8": {},
+		"data/p43.i8": {},
+		"data/p44.i8": {},
+		"data/p45.i8": {},
+		"data/p46.i8": {},
+		"data/p47.i8": {},
+		"data/p48.i8": {},
+		"data/p49.i8": {},
+		"data/p5.i8": {},
+		"data/p50.i8": {},
+		"data/p51.i8": {},
+		"data/p52.i8": {},
+		"data/p53.i8": {},
+		"data/p54.i8": {},
+		"data/p55.i8": {},
+		"data/p6.i8": {},
+		"data/p7.i8": {},
+		"data/p8.i8": {},
+		"data/p9.i8": {},
+		"data/power_up.raw": {},
+		"data/ready.raw": {},
+		"data/war_call_for_backup.raw": {},
+		"data/war_cover_me.raw": {},
+		"data/war_get_down.raw": {},
+		"data/war_look_out.raw": {},
+		"data/war_target_destroyed.raw": {},
+		"data/war_target_engaged.raw": {},
+		"data/war_watch_my_back.raw": {},
+		"img-src/Background.h": {},
+		"img-src/Background.jpg": {
+			"PNGFlags": [
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/Clown.h": {},
+		"img-src/Clown.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"bpp=8"
+			]
+		},
+		"img-src/FreyzeX672.h": {},
+		"img-src/FreyzeX672.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=1"
+			]
+		},
+		"img-src/GaiaX34.h": {},
+		"img-src/GaiaX34.png": {
+			"PNGFlags": [
+				"isTransparent=1",
+				"automatic=1"
+			]
+		},
+		"img-src/MagmicZX41.h": {},
+		"img-src/MagmicZX41.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=1"
+			]
+		},
+		"img-src/asteroids": {},
+		"img-src/bg-bright.png": {},
+		"img-src/bg-dark.png": {},
+		"img-src/bg-sharp.png": {},
+		"img-src/bg.h": {},
+		"img-src/bg.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"bpp=16"
+			]
+		},
+		"img-src/bgFreyzeX672.h": {},
+		"img-src/bgFreyzeX672.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"bpp=16"
+			]
+		},
+		"img-src/bgGaiaX34.h": {},
+		"img-src/bgGaiaX34.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"bpp=16"
+			]
+		},
+		"img-src/bgMagmicZX41.h": {},
+		"img-src/bgMagmicZX41.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"bpp=16"
+			]
+		},
+		"img-src/credits.aseprite": {},
+		"img-src/credits.h": {},
+		"img-src/credits.png": {},
+		"img-src/dot.h": {},
+		"img-src/dot.png": {
+			"PNGFlags": [
+				"bpp=16",
+				"isTransparent=0",
+				"automatic=1"
+			]
+		},
+		"img-src/lifeCountUI.aseprite": {},
+		"img-src/lifeCountUI.h": {},
+		"img-src/lifeCountUI.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"bpp=8",
+				"isTransparent=1"
+			]
+		},
+		"img-src/logo.h": {},
+		"img-src/logo.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"bpp=4",
+				"isTransparent=1"
+			]
+		},
+		"img-src/menu.h": {},
+		"img-src/menu.i16": {},
+		"img-src/menu.png": {},
+		"img-src/missions": {},
+		"img-src/planets": {},
+		"img-src/podCountUI.aseprite": {},
+		"img-src/podCountUI.h": {},
+		"img-src/podCountUI.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"bpp=8",
+				"isTransparent=1"
+			]
+		},
+		"img-src/tiles.h": {},
+		"img-src/tiles.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=0",
+				"binary=0",
+				"bpp=8"
+			]
+		},
+		"meshes/Alien.h": {},
+		"meshes/AlienBones.h": {},
+		"meshes/Astronaut.h": {},
+		"meshes/Bullet.h": {},
+		"meshes/Bullet.mtl": {},
+		"meshes/Bullet.obj": {},
+		"meshes/CarHatchback.h": {},
+		"meshes/CarHatchback.mtl": {},
+		"meshes/CarHatchback.obj": {},
+		"meshes/Craft_cargoA.h": {},
+		"meshes/Craft_cargoB.h": {},
+		"meshes/Craft_miner.h": {},
+		"meshes/Craft_racer.h": {},
+		"meshes/Craft_speederA.h": {},
+		"meshes/Craft_speederB.h": {},
+		"meshes/Craft_speederC.h": {},
+		"meshes/Craft_speederD.h": {},
+		"meshes/Jet.h": {},
+		"meshes/Jet.mtl": {},
+		"meshes/Jet.obj": {},
+		"meshes/Jet2.h": {},
+		"meshes/Jet2.mtl": {},
+		"meshes/Jet2.obj": {},
+		"meshes/NaturePack_051.h": {},
+		"meshes/NaturePack_061.h": {},
+		"meshes/NaturePack_068.h": {},
+		"meshes/NaturePack_071.h": {},
+		"meshes/NaturePack_074.h": {},
+		"meshes/NaturePack_075.h": {},
+		"meshes/NaturePack_084.h": {},
+		"meshes/NaturePack_114.h": {},
+		"meshes/NaturePack_150.h": {},
+		"meshes/PipeStand.h": {},
+		"meshes/Plant.h": {},
+		"meshes/Portal.h": {},
+		"meshes/Quad.h": {},
+		"meshes/WatercraftPack_017.h": {},
+		"meshes/WatercraftPack_019.h": {},
+		"meshes/WatercraftPack_028.h": {},
+		"meshes/alien.mtl": {},
+		"meshes/alien.obj": {},
+		"meshes/alienBones.mtl": {},
+		"meshes/alienBones.obj": {},
+		"meshes/astronaut.mtl": {},
+		"meshes/astronaut.obj": {},
+		"meshes/blender": {},
+		"meshes/car-hatchback-red.mtl": {},
+		"meshes/craft.zip": {},
+		"meshes/craft_cargoA.mtl": {},
+		"meshes/craft_cargoA.obj": {},
+		"meshes/craft_cargoB.mtl": {},
+		"meshes/craft_cargoB.obj": {},
+		"meshes/craft_miner.mtl": {},
+		"meshes/craft_miner.obj": {},
+		"meshes/craft_racer.mtl": {},
+		"meshes/craft_racer.obj": {},
+		"meshes/craft_speederA.mtl": {},
+		"meshes/craft_speederA.obj": {},
+		"meshes/craft_speederB.mtl": {},
+		"meshes/craft_speederB.obj": {},
+		"meshes/craft_speederC.mtl": {},
+		"meshes/craft_speederC.obj": {},
+		"meshes/craft_speederD.mtl": {},
+		"meshes/craft_speederD.obj": {},
+		"meshes/naturePack_051.mtl": {},
+		"meshes/naturePack_051.obj": {},
+		"meshes/naturePack_055.mtl": {},
+		"meshes/naturePack_061.mtl": {},
+		"meshes/naturePack_061.obj": {},
+		"meshes/naturePack_061.obj.ignore": {},
+		"meshes/naturePack_066.mtl": {},
+		"meshes/naturePack_067.mtl": {},
+		"meshes/naturePack_068.mtl": {},
+		"meshes/naturePack_068.obj": {},
+		"meshes/naturePack_071.mtl": {},
+		"meshes/naturePack_071.obj": {},
+		"meshes/naturePack_074.mtl": {},
+		"meshes/naturePack_074.obj": {},
+		"meshes/naturePack_075.mtl": {},
+		"meshes/naturePack_075.obj": {},
+		"meshes/naturePack_084.mtl": {},
+		"meshes/naturePack_084.obj": {},
+		"meshes/naturePack_114.mtl": {},
+		"meshes/naturePack_114.obj": {},
+		"meshes/naturePack_150.mtl": {},
+		"meshes/naturePack_150.obj": {},
+		"meshes/pipeStand.mtl": {},
+		"meshes/pipeStand.obj": {},
+		"meshes/plant.mtl": {},
+		"meshes/plant.obj": {},
+		"meshes/portal.mtl": {},
+		"meshes/portal.obj": {},
+		"meshes/quad.mtl": {},
+		"meshes/quad.obj": {},
+		"meshes/robot.mtl": {},
+		"meshes/spaceCraft1.mtl": {},
+		"meshes/spaceCraft2.mtl": {},
+		"meshes/spaceCraft3.mtl": {},
+		"meshes/spaceCraft4.mtl": {},
+		"meshes/spaceCraft5.mtl": {},
+		"meshes/texture.h": {},
+		"meshes/texture.png": {},
+		"meshes/watercraftPack_017.mtl": {},
+		"meshes/watercraftPack_017.obj": {},
+		"meshes/watercraftPack_019.mtl": {},
+		"meshes/watercraftPack_019.obj": {},
+		"meshes/watercraftPack_027.mtl": {},
+		"meshes/watercraftPack_028.mtl": {},
+		"meshes/watercraftPack_028.obj": {},
+		"meshes/watercraftPack_029.mtl": {},
+		"music/bensound-birthofahero.raw": {},
+		"sound/bensound-birthofahero.mp3": {},
+		"sound/engine.h": {},
+		"sound/engine.ogg": {},
+		"sound/explosion.h": {},
+		"sound/explosion.ogg": {},
+		"sound/hit.h": {},
+		"sound/hit.ogg": {},
+		"sound/level_up.ogg": {},
+		"sound/power_up.ogg": {},
+		"sound/ready.ogg": {},
+		"sound/shoot.h": {},
+		"sound/shoot.ogg": {},
+		"sound/war_call_for_backup.ogg": {},
+		"sound/war_cover_me.ogg": {},
+		"sound/war_get_down.ogg": {},
+		"sound/war_look_out.ogg": {},
+		"sound/war_target_destroyed.ogg": {},
+		"sound/war_target_engaged.ogg": {},
+		"sound/war_watch_my_back.ogg": {},
+		"scripts/mesh.js": {},
+		"src/Background.h": {},
+		"src/Floaters.h": {},
+		"src/HUD.h": {},
+		"src/Particles.h": {},
+		"src/Renderer.h": {},
+		"src/Serialize.hpp": {},
+		"src/cutscene.h": {},
+		"src/drawMesh.h": {},
+		"src/general.h": {},
+		"src/item.h": {},
+		"src/main.cpp": {},
+		"src/main.d": {},
+		"src/meshes.h": {},
+		"src/miloslav.h": {},
+		"src/ship.h": {},
+		"src/shop.h": {},
+		"src/world.h": {},
+		"server/Game.js": {},
+		"server/Player.js": {},
+		"server/data.js": {},
+		"server/games": {},
+		"server/hash.js": {},
+		"server/index.js": {},
+		"server/static": {},
+		"img-src/asteroids/a0.png": {
+			"PNGFlags": [
+				"binary=1",
+				"isTransparent=1",
+				"header=0",
+				"bpp=8"
+			]
+		},
+		"img-src/asteroids/a10.png": {},
+		"img-src/asteroids/a1.png": {},
+		"img-src/asteroids/a11.png": {},
+		"img-src/asteroids/a12.png": {},
+		"img-src/asteroids/a13.png": {},
+		"img-src/asteroids/a14.png": {},
+		"img-src/asteroids/a15.png": {},
+		"img-src/asteroids/a16.png": {},
+		"img-src/asteroids/a17.png": {},
+		"img-src/asteroids/a2.png": {},
+		"img-src/asteroids/a3.png": {},
+		"img-src/asteroids/a4.png": {},
+		"img-src/asteroids/a5.png": {},
+		"img-src/asteroids/a6.png": {},
+		"img-src/asteroids/a7.png": {},
+		"img-src/asteroids/a8.png": {},
+		"img-src/asteroids/a9.png": {},
+		"img-src/missions/mission_1.i16": {},
+		"img-src/missions/mission_1.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=0",
+				"binary=1",
+				"header=0",
+				"bpp=16"
+			]
+		},
+		"img-src/missions/mission_2.i16": {},
+		"img-src/missions/mission_2.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=0",
+				"binary=1",
+				"header=0",
+				"bpp=16"
+			]
+		},
+		"img-src/planets/p0.i8": {},
+		"img-src/planets/p0.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p1.i8": {},
+		"img-src/planets/p1.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p10.i8": {},
+		"img-src/planets/p10.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p11.i8": {},
+		"img-src/planets/p11.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p12.i8": {},
+		"img-src/planets/p12.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p13.i8": {},
+		"img-src/planets/p13.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p14.i8": {},
+		"img-src/planets/p14.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p15.i8": {},
+		"img-src/planets/p15.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p16.i8": {},
+		"img-src/planets/p16.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p17.i8": {},
+		"img-src/planets/p17.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p18.i8": {},
+		"img-src/planets/p18.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p19.i8": {},
+		"img-src/planets/p19.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p2.i8": {},
+		"img-src/planets/p2.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p20.i8": {},
+		"img-src/planets/p20.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p21.i8": {},
+		"img-src/planets/p21.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p22.i8": {},
+		"img-src/planets/p22.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p23.i8": {},
+		"img-src/planets/p23.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p24.i8": {},
+		"img-src/planets/p24.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p25.i8": {},
+		"img-src/planets/p25.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p26.i8": {},
+		"img-src/planets/p26.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p27.i8": {},
+		"img-src/planets/p27.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p28.i8": {},
+		"img-src/planets/p28.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p29.i8": {},
+		"img-src/planets/p29.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p3.i8": {},
+		"img-src/planets/p3.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p30.i8": {},
+		"img-src/planets/p30.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p31.i8": {},
+		"img-src/planets/p31.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p32.i8": {},
+		"img-src/planets/p32.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p33.i8": {},
+		"img-src/planets/p33.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p34.i8": {},
+		"img-src/planets/p34.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p35.i8": {},
+		"img-src/planets/p35.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p36.i8": {},
+		"img-src/planets/p36.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p37.i8": {},
+		"img-src/planets/p37.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p38.i8": {},
+		"img-src/planets/p38.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p39.i8": {},
+		"img-src/planets/p39.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p4.i8": {},
+		"img-src/planets/p4.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p40.i8": {},
+		"img-src/planets/p40.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p41.i8": {},
+		"img-src/planets/p41.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p42.i8": {},
+		"img-src/planets/p42.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p43.i8": {},
+		"img-src/planets/p43.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p44.i8": {},
+		"img-src/planets/p44.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p45.i8": {},
+		"img-src/planets/p45.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p46.i8": {},
+		"img-src/planets/p46.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p47.i8": {},
+		"img-src/planets/p47.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p48.i8": {},
+		"img-src/planets/p48.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p49.i8": {},
+		"img-src/planets/p49.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p5.i8": {},
+		"img-src/planets/p5.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p50.i8": {},
+		"img-src/planets/p50.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p51.i8": {},
+		"img-src/planets/p51.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p52.i8": {},
+		"img-src/planets/p52.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p53.i8": {},
+		"img-src/planets/p53.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p54.i8": {},
+		"img-src/planets/p54.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p55.i8": {},
+		"img-src/planets/p55.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p6.i8": {},
+		"img-src/planets/p6.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p7.i8": {},
+		"img-src/planets/p7.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p8.i8": {},
+		"img-src/planets/p8.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"img-src/planets/p9.i8": {},
+		"img-src/planets/p9.png": {
+			"PNGFlags": [
+				"palette=${projectPath}/src/general.h",
+				"isTransparent=1",
+				"binary=1",
+				"header=0",
+				"bpp=8",
+				"automatic=1"
+			]
+		},
+		"meshes/blender/Bullet.blend": {},
+		"meshes/blender/Bullet.blend1": {},
+		"meshes/blender/CarHatchback.blend": {},
+		"meshes/blender/CarHatchback.blend1": {},
+		"meshes/blender/ChargePoint.blend": {},
+		"meshes/blender/ChargePoint.blend1": {},
+		"meshes/blender/Jet.blend": {},
+		"meshes/blender/Jet.blend1": {},
+		"meshes/blender/Jet2.blend": {},
+		"meshes/blender/Jet2.blend1": {},
+		"meshes/blender/PaddleBoat.blend": {},
+		"meshes/blender/PaddleBoat.blend1": {},
+		"meshes/blender/Palm.blend": {},
+		"meshes/blender/Pine.blend": {},
+		"meshes/blender/Shroom.blend": {},
+		"server/games/Armadillo.schema": {},
+		"server/static/index.html": {},
+		"TASArmada.wasm.tmp1664307": {}
+	},
+	"ideVersion": 10000,
+	"BUILDFlags": {
+		"3DS": {
+			"LD": "${devkitpro}/devkitARM/bin/arm-none-eabi-g++",
+			"CPP": "${devkitpro}/devkitARM/bin/arm-none-eabi-g++",
+			"C": "${devkitpro}/devkitARM/bin/arm-none-eabi-gcc",
+			"GDB": "${devkitpro}/devkitARM/bin/arm-none-eabi-gdb"
+		},
+		"ESPBoy": {
+			"LD": "${appPath}/linux/esp8266/bin/xtensa-lx106-elf-g++",
+			"CPP": "${appPath}/linux/esp8266/bin/xtensa-lx106-elf-g++",
+			"C": "${appPath}/linux/esp8266/bin/xtensa-lx106-elf-gcc",
+			"GDB": "${appPath}/linux/esp8266/bin/xtensa-lx106elf--gdb"
+		},
+		"wasm": {
+			"LD": "emcc",
+			"CPP": "emcc",
+			"C": "emcc"
+		},
+		"Pokitto": {
+			"ignore": "femto"
+		}
+	}
+}
