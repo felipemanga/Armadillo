@@ -87,22 +87,24 @@ constexpr inline const WorldFeature spaceFeatures[] = {
     {{15023, -27553.0f}, "Hubnor", 55, 56, 2}
 };
 
+bool passMission(){return true;}
+
 constexpr inline const Mission missions[] = {
     {
         .x = 0, .y = 0,
         .worldId = 0,
         .npcFaction = 0,
-        .update = +[]{return true;},
+        .update = passMission,
         .npcDied = nullptr,
         .npcInteract = nullptr
     },
     {
         .x = 0, .y = 0,
-        .worldId = 1,
+        .worldId = 0,
         .npcFaction = 1,
         .update = nullptr,
         .npcDied = nullptr,
-        .npcInteract = +[]{return true;}
+        .npcInteract = passMission
     },
     {
         .npcFaction = 0,
