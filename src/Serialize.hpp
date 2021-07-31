@@ -100,7 +100,6 @@ public:
 
     template <typename Type>
     static bool fromFile(Type& value, const char* fileName) {
-        return false;
         Serialize s;
         instance = &s;
         auto proxy = +[](void* obj, SerializeProperty cb){

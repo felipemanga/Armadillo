@@ -285,7 +285,7 @@
 			"-DSCREEN_WIDTH=220",
 			"-DSCREEN_HEIGHT=176",
 			"-DSCREEN_565",
-			"-DPIXEL_SIZE=2",
+			"-DPIXEL_SIZE=4",
 			"-DNO_FLOAT_",
 			"-DUSE_SCANLINE_RENDERER",
 			"-Wall",
@@ -655,16 +655,16 @@
 		"TASArmada": {},
 		"TASArmada.3dsx": {},
 		"TASArmada.bin": {},
-		"TASArmada.elf": {},
 		"TASArmada.data": {},
+		"TASArmada.elf": {},
 		"TASArmada.html": {},
 		"TASArmada.js": {},
 		"TASArmada.wasm": {},
 		"credits.txt": {},
+		"db.bin": {},
 		"data": {
 			"sdcard": true
 		},
-		"db.bin": {},
 		"gensystem.js": {},
 		"img-src": {},
 		"index.html": {},
@@ -694,6 +694,8 @@
 		},
 		"data/mission_1.i16": {},
 		"data/mission_2.i16": {},
+		"data/mission_3.i16": {},
+		"data/mission_4.i16": {},
 		"data/p0.i8": {},
 		"data/p1.i8": {},
 		"data/p10.i8": {},
@@ -794,6 +796,12 @@
 				"isTransparent=1"
 			]
 		},
+		"img-src/Sprite-0012.aseprite": {},
+		"img-src/Sprite-0013.aseprite": {},
+		"img-src/Sprite-0014.aseprite": {},
+		"img-src/Sprite-0015-v2.aseprite": {},
+		"img-src/Sprite-0017.aseprite": {},
+		"img-src/Sprite-0018.aseprite": {},
 		"img-src/asteroids": {},
 		"img-src/bg-bright.png": {},
 		"img-src/bg-dark.png": {},
@@ -988,6 +996,14 @@
 		"meshes/watercraftPack_028.obj": {},
 		"meshes/watercraftPack_029.mtl": {},
 		"music/bensound-birthofahero.raw": {},
+		"scripts/mesh.js": {},
+		"server/Game.js": {},
+		"server/Player.js": {},
+		"server/data.js": {},
+		"server/games": {},
+		"server/hash.js": {},
+		"server/index.js": {},
+		"server/static": {},
 		"sound/bensound-birthofahero.mp3": {},
 		"sound/engine.h": {},
 		"sound/engine.ogg": {},
@@ -1007,7 +1023,6 @@
 		"sound/war_target_destroyed.ogg": {},
 		"sound/war_target_engaged.ogg": {},
 		"sound/war_watch_my_back.ogg": {},
-		"scripts/mesh.js": {},
 		"src/Background.h": {},
 		"src/Floaters.h": {},
 		"src/HUD.h": {},
@@ -1025,13 +1040,6 @@
 		"src/ship.h": {},
 		"src/shop.h": {},
 		"src/world.h": {},
-		"server/Game.js": {},
-		"server/Player.js": {},
-		"server/data.js": {},
-		"server/games": {},
-		"server/hash.js": {},
-		"server/index.js": {},
-		"server/static": {},
 		"img-src/asteroids/a0.png": {
 			"PNGFlags": [
 				"binary=1",
@@ -1040,15 +1048,15 @@
 				"bpp=8"
 			]
 		},
-		"img-src/asteroids/a10.png": {},
 		"img-src/asteroids/a1.png": {},
 		"img-src/asteroids/a11.png": {},
+		"img-src/asteroids/a10.png": {},
 		"img-src/asteroids/a12.png": {},
 		"img-src/asteroids/a13.png": {},
 		"img-src/asteroids/a14.png": {},
 		"img-src/asteroids/a15.png": {},
-		"img-src/asteroids/a16.png": {},
 		"img-src/asteroids/a17.png": {},
+		"img-src/asteroids/a16.png": {},
 		"img-src/asteroids/a2.png": {},
 		"img-src/asteroids/a3.png": {},
 		"img-src/asteroids/a4.png": {},
@@ -1057,6 +1065,7 @@
 		"img-src/asteroids/a7.png": {},
 		"img-src/asteroids/a8.png": {},
 		"img-src/asteroids/a9.png": {},
+		"img-src/missions/mission_1.aseprite": {},
 		"img-src/missions/mission_1.i16": {},
 		"img-src/missions/mission_1.png": {
 			"PNGFlags": [
@@ -1067,8 +1076,31 @@
 				"bpp=16"
 			]
 		},
+		"img-src/missions/mission_2.aseprite": {},
 		"img-src/missions/mission_2.i16": {},
 		"img-src/missions/mission_2.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=0",
+				"binary=1",
+				"header=0",
+				"bpp=16"
+			]
+		},
+		"img-src/missions/mission_3.aseprite": {},
+		"img-src/missions/mission_3.i16": {},
+		"img-src/missions/mission_3.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=0",
+				"binary=1",
+				"header=0",
+				"bpp=16"
+			]
+		},
+		"img-src/missions/mission_4.aseprite": {},
+		"img-src/missions/mission_4.i16": {},
+		"img-src/missions/mission_4.png": {
 			"PNGFlags": [
 				"automatic=1",
 				"isTransparent=0",
@@ -1550,7 +1582,6 @@
 				"automatic=1"
 			]
 		},
-		"img-src/planets/p48.i8": {},
 		"img-src/planets/p48.png": {
 			"PNGFlags": [
 				"palette=${projectPath}/src/general.h",
@@ -1561,6 +1592,7 @@
 				"automatic=1"
 			]
 		},
+		"img-src/planets/p48.i8": {},
 		"img-src/planets/p49.i8": {},
 		"img-src/planets/p49.png": {
 			"PNGFlags": [
@@ -1710,7 +1742,7 @@
 		"meshes/blender/Shroom.blend": {},
 		"server/games/Armadillo.schema": {},
 		"server/static/index.html": {},
-		"TASArmada.wasm.tmp1664307": {}
+		"TASArmada.wasm.tmp2e1e21a": {}
 	},
 	"ideVersion": 10000,
 	"BUILDFlags": {

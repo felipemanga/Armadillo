@@ -4,12 +4,12 @@
 constexpr u32 shipCount = 8;
 
 constexpr inline const char* specialCaption[] = {
-    "",
-    "",
-    "Repair Ship",
-    "Recharge Pods",
-    "Shop / Inventory",
-    "Mission Target"
+    nullptr,
+    nullptr,
+    "Repair",
+    "Pods",
+    "Shop",
+    "Target"
 };
 
 constexpr inline const char specialHUDSym[] = {
@@ -42,6 +42,7 @@ class Ship {
 
 public:
     static inline u8 factionColor[] = {0, 212};
+    static inline Point2D missionTarget;
 
     enum class Special : uint8_t {
         Normal,
@@ -123,7 +124,7 @@ public:
                     streamedEffect = "data/war_watch_my_back.raw";
             }
         }
-        if (HP < 0) {
+        if (HP <= 0) {
             HP = 0;
             broadcast(&Ship::onShipDied, uid);
         } else if (state == State::AIFlee && ttnt > 30) {
@@ -236,7 +237,7 @@ public:
     }
 
     bool isBoss() {
-        return special == Special::Boss;
+        return special == Special::Boss || (special == Special::Mission && faction != player->faction);
     }
 
     s32 radius() {
@@ -321,6 +322,10 @@ public:
         position += speed * f32(0.05f);
     }
 
+    bool isDead() {
+        return HP <= 0;
+    }
+
     bool dead() {
         if (HP > 0)
             return false;
@@ -390,16 +395,25 @@ public:
         }
     }
 
+    void setTarget(Point2D target) {
+        this->target = target;
+        this->ttnt = random(60, 300);
+    }
+
     void flee() {
         if (dead())
             return;
 
         if (ttnt == 0 || (position - target).lengthSquared() < 64) {
-            target = position + Point2D{
+            Point2D offset{
                 f32(random(-screenWidth, screenWidth)),
                 f32(random(-screenWidth, screenWidth))
             };
-            ttnt = random(60, 300);
+            if (special == Special::Mission) {
+                setTarget(missionTarget + offset);
+            } else {
+                setTarget(position + offset);
+            }
         }
 
         if (--ttnt <= 0) {
@@ -420,7 +434,9 @@ public:
     }
 
     void updateSpecial() {
-        speed *= f32(0.8f);
+        if (special != Special::Mission) {
+            speed *= f32(0.8f);
+        }
         if ((position - player->position).distanceCheck(64)) {
             specialInRange();
         }
@@ -428,7 +444,7 @@ public:
 
     void specialInRange() {
         cActionArg = reinterpret_cast<uptr>(this);
-        featureCaption = specialCaption[(int)special];
+        featureCaption = specialCaption[(int)special] ?: "";
         cAction = specialAction[(int)special];
     }
 
@@ -663,6 +679,7 @@ public:
         if (state == State::Player) {
             Graphics::primaryColor = colorFromRGB(0x33EEAA);
             Graphics::setCursor(0, HUDSize);
+            Graphics::print("\n >", missionText);
             Graphics::print(
                 "\n X: ", (int) round(position.x),
                 "\n Y: ", (int) round(position.y));
@@ -679,29 +696,25 @@ public:
                 if (odd) {
                     bool big = noticeWidth < 10;
                     f32 x = -f32(noticeWidth * (big ? 5 : 3)) / 2;
-                    Graphics::setCursor(position + Point2D{x, f32(-6 - radius() - 30 + showNotice * 2)});
+                    Graphics::setCursor(position + Point2D{x, f32(-7 - radius() - 30 + showNotice * 2)});
                     Graphics::primaryColor = colorFromRGB(0x77EEFF);
                     Graphics::doubleFontSize = big;
                     Graphics::print(notice);
                 }
             } else if (state == State::Player && showExpUp) {
                 showExpUp--;
-                Graphics::setCursor(position + Point2D{f32(-5), f32(-6 - radius())});
+                Graphics::setCursor(position + Point2D{f32(-5), f32(-7 - radius())});
                 Graphics::primaryColor = colorFromRGB(0x33FF33);
                 Graphics::doubleFontSize = false;
                 Graphics::print("Exp +", expInc);
             } else if (state != State::Player && HP == maxHP && faction != player->faction) {
-                Graphics::setCursor(position + Point2D{f32(-5), f32(-6 - radius())});
+                Graphics::setCursor(position + Point2D{f32(-5), f32(-7 - radius())});
                 Graphics::primaryColor = colorFromRGB(0xFFFFFF);
                 Graphics::doubleFontSize = false;
                 Graphics::print("Lv:", level);
             } else if (state != State::Player && faction == player->faction) {
-                const char* txt = nullptr;
-                if (special == Special::Medic) txt = "Medic";
-                else if (special == Special::PodGuy) txt = "Pods";
-                else if (special == Special::Shop) txt = "Shop";
-                if (txt) {
-                    Graphics::setCursor(position + Point2D{f32(-5), f32(-6 - radius())});
+                if (const char* txt = specialCaption[int(special)]; txt) {
+                    Graphics::setCursor(position + Point2D{f32(-5), f32(-7 - radius())});
                     Graphics::primaryColor = cActionArg == reinterpret_cast<uptr>(this) ?
                         colorFromRGB(0xFFFFFF) :
                         colorFromRGB(0x0000FF);
@@ -709,12 +722,21 @@ public:
                     Graphics::print(txt);
                 }
             } else {
-                Graphics::setCursor(position + Point2D{f32(-5), f32(-6 - radius())});
-                Graphics::primaryColor = HP > (maxHP / 4) ? colorFromRGB(0xFFFFFF) : colorFromRGB(0xFF3300);
-                Graphics::doubleFontSize = isBoss();
-                Graphics::print(s32(HP));
+                // Graphics::setCursor(position + Point2D{f32(-5), f32(-6 - radius())});
+                // Graphics::doubleFontSize = isBoss();
+                // Graphics::print(s32(HP));
             }
+
             Graphics::doubleFontSize = false;
+        }
+
+        if (HP != maxHP) {
+            Graphics::primaryColor = HP > (maxHP / 4) ? colorFromRGB(0x00FF00) : colorFromRGB(0xFF3300);
+            auto lineStart = position - radius();
+            auto lineMid = lineStart + Point2D{f32(HP * 2 * radius()) / maxHP, 0};
+            auto lineEnd = lineStart + Point2D{f32(2 * radius()), 0};
+            Graphics::line(lineStart, lineMid);
+            Graphics::line(lineMid, lineEnd, 0x770000);
         }
     }
 
@@ -733,6 +755,7 @@ inline void Ship::onShipDied(u32 id){
             Audio::play<4>(explosion);
         }
         if (special == Special::Mission) {
+            LOG("Mission NPC Died\n");
             missionNPCDied();
         }
     } else if (hitList & (1 << id)) {
@@ -753,6 +776,10 @@ inline void Ship::onShipDied(u32 id){
                 for (u32 j = 0; j < inventorySize; ++j) {
                     if (inventory[j] < itemCount)
                         continue;
+                    if (items[item].name == nullptr) {
+                        LOG(item, " is null\n");
+                        break;
+                    }
                     inventory[j] = item;
                     dead.inventory[i] = itemCount;
 

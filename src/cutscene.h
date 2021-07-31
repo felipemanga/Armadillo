@@ -42,12 +42,15 @@ inline void updateEnterCutScene() {
 
 inline void updateCutScene() {
     delay(0);
-    if ((getTime() - deadkey) > 250 &&  isPressed(Button::A)) {
-        nextScenePage();
-    }
-    if (targetBacklight == 0 && backlight == 0) {
-        targetBacklight = 255;
-        gameState = GameState::Space;
-        gameRenderer->attach();
+    if (targetBacklight != 0) {
+        if ((getTime() - deadkey) > 250 &&  isPressed(Button::A)) {
+            nextScenePage();
+        }
+    } else {
+        if (backlight == 0) {
+            targetBacklight = 255;
+            gameState = GameState::Space;
+            gameRenderer->attach();
+        }
     }
 }

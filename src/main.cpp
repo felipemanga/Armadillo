@@ -21,6 +21,7 @@ f32 shake;
 void enterWorld(u32 worldId);
 const c8* streamedEffect = nullptr;
 u32 effectPriority = 0;
+char missionText[100];
 
 using cAction_t = void (*)(uptr);
 bool ignoreAction = false;
@@ -77,16 +78,6 @@ void nextMission();
 Audio::Sink<7, 10000> audio;
 Point2D refCamera;
 
-void nextMission() {
-    if (universe.missionId >= missionCount) {
-        return;
-    }
-    LOG("Mission ", universe.missionId, "\n");
-    universe.missionId++;
-    universe.save();
-    gameState = GameState::EnterCutScene;
-}
-
 void updateCamera(f32 speed) {
     auto target = Ship::player->position - Point2D{screenWidth/2, screenHeight/2};
     refCamera -= (refCamera - target) * speed;
@@ -105,14 +96,52 @@ void respawnNPC(u32 id) {
         };
         if ((Ship::player->position - point).distanceCheck(screenWidth)) {
             auto& ship = ships[id];
-            ship.special = Ship::Special::Mission;
             ship.setFaction(mission.npcFaction);
             ship.spawn();
             ship.state = Ship::State::AIFlee;
+            ship.special = Ship::Special::Mission;
             return;
         }
     }
     (w.spawn ?: spawnAlienWorld)(id, ships[id], w);
+}
+
+void updateMissionText() {
+    auto& mission = missions[universe.missionId];
+    // snprintf(missionText, sizeof(missionText), "%d, %d", int(mission.worldId), int(world));
+    // return;
+
+    if (mission.worldId == world) {
+        Ship::missionTarget = Point2D{f32(mission.x), f32(mission.y)};
+        snprintf(missionText, sizeof(missionText), mission.message ?: "%d, %d", int(mission.x), int(mission.y));
+        return;
+    }
+    auto& w = worlds[world];
+    for (u32 i = 0; i < w.featureCount; ++i) {
+        auto& feature = w.features[i];
+        if (feature.targetWorld == mission.worldId) {
+            Ship::missionTarget = feature.position;
+            snprintf(missionText, sizeof(missionText), "%s (%d, %d)", feature.name, int(feature.position.x), int(feature.position.y));
+            return;
+        }
+    }
+    snprintf(missionText, sizeof(missionText), "Space");
+}
+
+void nextMission() {
+    if (universe.missionId >= missionCount) {
+        return;
+    }
+    LOG("Mission ", universe.missionId, "\n");
+    universe.missionId++;
+    universe.save();
+    gameState = GameState::EnterCutScene;
+    updateMissionText();
+    auto& mission = missions[universe.missionId];
+    ships[1].special = (mission.worldId == world && mission.npcFaction)
+        ? Ship::Special::Mission
+        : Ship::Special::Normal;
+    Ship::player->addExp(universe.missionId * universe.missionId * 8);
 }
 
 void enterWorld(u32 worldId) {
@@ -120,8 +149,8 @@ void enterWorld(u32 worldId) {
         return;
 
     fadeOut();
-    shots.clear();
-    gameRenderer->get<Particles>().clear();
+    shots.purge();
+    gameRenderer->get<Particles>().purge();
 
     floaters.clear();
     auto backup = prevPosition;
@@ -133,16 +162,18 @@ void enterWorld(u32 worldId) {
         respawnNPC(i);
 
     updateCamera(f32(1.0f));
+    updateMissionText();
 }
 
 void init(){
+    Graphics::textMode = Graphics::TextMode::Clip;
     Graphics::palette = miloslav;
     setMaxFPS(30);
     Graphics::primaryColor = colorFromRGB(0xFFFFFF);
     world = 1;
-    activateFeature(0);
     Serialize::init();
     gameRenderer = &std::get<GameRenderer>(renderer);
+    activateFeature(0);
     LOG("Free RAM: ", getFreeRAM(), "\n");
 }
 
@@ -208,7 +239,7 @@ void renderWorld(const World& world) {
 
     floaters.draw();
 
-    if (backlight < 255) {
+    if (backlight < 255 || Ship::player->isDead()) {
         cAction = cActionNOP;
         featureCaption = nullptr;
     }
@@ -260,13 +291,26 @@ void updateSpace() {
         Graphics::print("C= ", featureCaption);
     }
 
+    auto& mission = missions[universe.missionId];
+    if ((mission.worldId == world && ships[1].special == Ship::Special::Mission) || world == 1) {
+        bool hasTargetShip = mission.worldId == world && mission.npcFaction && ships[1].special == Ship::Special::Mission;
+        auto delta = (hasTargetShip ? ships[1].position : Ship::missionTarget) - Ship::player->position;
+        if (delta.lengthSquared() > f32(s32(screenWidth/2) * s32(screenWidth/2))) {
+            auto angle = atan2(delta.y, delta.x);
+            Graphics::primaryColor = colorFromRGB(0x00FF00);
+            Point2D position = Ship::player->position + Point2D{cos(angle) * f32(20), sin(angle) * f32(20)};
+            Graphics::setCursor(position);
+            Graphics::print("!");
+        }
+    }
+
     shake *= f32(0.93f);
     updateCamera(f32(0.1));
     gameRenderer->get<Background>().init(worlds[world].tile);
 }
 
 void updateStart(){
-    // Audio::setVolume(0);
+    Audio::setVolume(0);
     if (auto music = Audio::play("music/bensound-birthofahero.raw")) {
         music->setLoop(true);
         LOG("Music started\n");
@@ -275,6 +319,7 @@ void updateStart(){
     backlight = 0;
     targetBacklight = 255;
     universe.load();
+    updateMissionText();
     if (Ship::player->load()) {
         LOG("Loaded with exp ", Ship::player->exp, "\n");
     } else {

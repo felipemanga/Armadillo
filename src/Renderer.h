@@ -6,7 +6,7 @@
 inline Particles shots;
 using PlanetsLayer = Graphics::layer::FastDrawList<10, 5>;
 using ShipsLayer = Graphics::layer::FastDrawList<20, 5>;
-using HUDLayer = Graphics::layer::DrawList<70, fontTiny>;
+using HUDLayer = Graphics::layer::DrawList<80, fontTiny>;
 
 using GameRenderer = Graphics::Renderer<
     Background,

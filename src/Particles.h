@@ -37,6 +37,10 @@ public:
         return old;
     }
 
+    void purge() {
+        ringHead = ringTail = 0;
+    }
+
     void insert(const Particle& p, s32 offset = 0) {
         auto& b = buffer[inc(ringHead)];
         b = p;

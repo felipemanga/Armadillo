@@ -23,6 +23,7 @@ struct World {
 using MissionCheck = bool (*)();
 
 struct Mission {
+    const char* message;
     s16 x, y;
     u8 worldId, npcFaction;
     MissionCheck update, npcDied, npcInteract;
@@ -31,7 +32,7 @@ struct Mission {
 constexpr inline const WorldFeature spaceFeatures[] = {
     {{-14.0f, -13.0f}, "Seneus", 7, 0, 2},
     {{509, 392}, "Mazion 7", 45, 2, 1},
-    {{-658.0f, 1000}, "Atus Zinges 144", 2, 3, 1},
+    {{-658.0f, 1000}, "Atus", 2, 3, 1},
     {{29, 1700}, "Baanella", 3, 4, 1},
     {{167, -2320.0f}, "La Tashtronia", 4, 5, 2},
     {{-2462.0f, 1317}, "Diaronia", 5, 6, 1},
@@ -40,73 +41,77 @@ constexpr inline const WorldFeature spaceFeatures[] = {
     {{3616, 2781}, "Bireus Anaddon", 8, 9, 1},
     {{-155.0f, -5169.0f}, "Senillian Patalis", 9, 10, 1},
     {{-5653.0f, 1180}, "Biarius Depalis", 10, 11, 2},
-    {{-5337.0f, 3260}, "Ciurn Amonaldi II", 11, 12, 1},
-    {{-5604.0f, 3950}, "Ceti Cairu", 12, 13, 2},
+    {{-5337.0f, 3260}, "Amonaldi II", 11, 12, 1},
+    {{-5604.0f, 3950}, "Cairu", 12, 13, 2},
     {{-1457.0f, 7239}, "Khannor", 13, 14, 2},
     {{-764.0f, 7991}, "Portos", 14, 15, 1},
-    {{8489, -273.0f}, "Sononine Sigma", 15, 16, 2},
-    {{6777, 6222}, "Astaroros e4", 16, 17, 2},
-    {{9274, -2797.0f}, "Papviz Ariaelialia", 17, 18, 2},
+    {{8489, -273.0f}, "Sononine", 15, 16, 2},
+    {{6777, 6222}, "Astaroros", 16, 17, 2},
+    {{9274, -2797.0f}, "Papviz", 17, 18, 2},
     {{-7757.0f, 6851}, "Kepillian", 18, 19, 2},
-    {{1815, -10705.0f}, "Prato Bandania", 19, 20, 1},
-    {{553, -11441.0f}, "Vopchin Vadopia", 20, 21, 2},
+    {{1815, -10705.0f}, "Prato", 19, 20, 1},
+    {{553, -11441.0f}, "Vopchin", 20, 21, 2},
     {{10938, 5032}, "Mazlon", 21, 22, 1},
-    {{-6054.0f, -10969.0f}, "Zerol Elax", 22, 23, 2},
+    {{-6054.0f, -10969.0f}, "Zerol", 22, 23, 2},
     {{12860, 3030}, "Churchil", 23, 24, 2},
-    {{-867.0f, -13719.0f}, "Alpha Vadopia", 24, 25, 1},
-    {{-13306.0f, -5118.0f}, "Sunacan Poolaka", 25, 26, 1},
+    {{-867.0f, -13719.0f}, "Vadopia", 24, 25, 1},
+    {{-13306.0f, -5118.0f}, "Sunacan", 25, 26, 1},
     {{-13202.0f, -6919.0f}, "Meraka", 26, 27, 2},
-    {{-5593.0f, -14364.0f}, "Theta Xeopia", 27, 28, 2},
-    {{-8338.0f, -13624.0f}, "New Ladburto", 28, 29, 2},
+    {{-5593.0f, -14364.0f}, "Xeopia", 27, 28, 2},
+    {{-8338.0f, -13624.0f}, "Ladburto", 28, 29, 2},
     {{14066, -8909.0f}, "Xelon V", 29, 30, 1},
-    {{-12045.0f, -12147.0f}, "Ploum Gamma", 30, 31, 1},
-    {{14154, -10751.0f}, "Cerminiar Kep‘am", 31, 32, 1},
+    {{-12045.0f, -12147.0f}, "Ploum", 30, 31, 1},
+    {{14154, -10751.0f}, "Cerminiar", 31, 32, 1},
     {{-5071.0f, 17580}, "Tafaka", 32, 33, 2},
-    {{2950, -18660.0f}, "Ketankor Moon", 33, 34, 1},
+    {{2950, -18660.0f}, "Ketankor", 33, 34, 1},
     {{-14608.0f, 12747}, "Sattaria", 34, 35, 1},
-    {{2107, 19920}, "Alpha Sizenrock", 35, 36, 2},
-    {{-3297.0f, 20290}, "Epsilon Cunicus", 36, 37, 1},
+    {{2107, 19920}, "Sienrock", 35, 36, 2},
+    {{-3297.0f, 20290}, "Cunicus", 36, 37, 1},
     {{-21045.0f, 1192}, "Fogthra", 37, 38, 1},
-    {{-9146.0f, -19698.0f}, "Tau Banenella", 38, 39, 2},
+    {{-9146.0f, -19698.0f}, "Banenella", 38, 39, 2},
     {{5198, 21672}, "Kettose", 39, 40, 2},
     {{-22300.0f, -5347.0f}, "Broeaux", 40, 41, 1},
-    {{8543, 21858}, "Than Dokoros Planetara", 41, 42, 1},
+    {{8543, 21858}, "Dokoros", 41, 42, 1},
     {{24013, 1712}, "La Vopanbula", 42, 43, 1},
     {{20362, 13893}, "Ozarth", 43, 44, 1},
     {{-23142.0f, 9911}, "Tacza", 44, 45, 1},
     {{-22148.0f, -12955.0f}, "Satox", 1, 46, 1},
-    {{7625, -25190.0f}, "Winaroid Outonia", 46, 47, 1},
-    {{24933, 10038}, "Banongolia Khanebus", 47, 48, 1},
+    {{7625, -25190.0f}, "Outonia", 46, 47, 1},
+    {{24933, 10038}, "Khanebus", 47, 48, 1},
     {{-23650.0f, 14012}, "Kuornia", 48, 49, 2},
     {{-20031.0f, 19452}, "Bion", 49, 50, 2},
-    {{-24422.0f, 14921}, "Ciebus Carlas", 50, 51, 1},
+    {{-24422.0f, 14921}, "Carlas", 50, 51, 1},
     {{20442, -20714.0f}, "Pluangolia", 51, 52, 2},
     {{-20478.0f, 21578}, "Camperan", 52, 53, 2},
-    {{-24387.0f, 18050}, "Sulchin Cartronia", 53, 54, 2},
+    {{-24387.0f, 18050}, "Cartronia", 53, 54, 2},
     {{-17856.0f, -25250.0f}, "Bopa", 54, 55, 1},
     {{15023, -27553.0f}, "Hubnor", 55, 56, 2}
 };
 
 bool passMission(){return true;}
+template<int> bool checkKillCount();
 
 constexpr inline const Mission missions[] = {
-    {
-        .x = 0, .y = 0,
-        .worldId = 0,
-        .npcFaction = 0,
-        .update = passMission,
-        .npcDied = nullptr,
-        .npcInteract = nullptr
+    { // Intro mission, Seneus
+        .update = passMission
     },
-    {
-        .x = 0, .y = 0,
-        .worldId = 0,
+    { // Talk to Captain, Seneus
         .npcFaction = 1,
-        .update = nullptr,
-        .npcDied = nullptr,
         .npcInteract = passMission
     },
+    { // Defeat boss, Space (near Mazion 7)
+        .x = 500, .y = 200,
+        .worldId = 1,
+        .npcFaction = 2,
+        .npcDied = passMission
+    },
+    { // Liberate Moon, Mazion 7
+        .message = "Liberate Mazion 7",
+        .worldId = 2,
+        .update = checkKillCount<10>
+    },
     {
+        .message = "End",
         .npcFaction = 0,
         .update = nullptr,
         .npcDied = nullptr,
@@ -385,7 +390,6 @@ inline void addItem(u32 item) {
 
 inline void missionNPCInteract() {
     if (auto cb = missions[universe.missionId].npcInteract; cb && cb()) {
-        ships[1].special = Ship::Special::Normal;
         nextMission();
     }
 }
@@ -393,4 +397,9 @@ inline void missionNPCInteract() {
 inline void missionNPCDied() {
     if (auto cb = missions[universe.missionId].npcDied; cb && cb())
         nextMission();
+}
+
+template<int amount>
+bool checkKillCount() {
+    return universe.worldKillCount[missions[universe.missionId].worldId] > amount;
 }
