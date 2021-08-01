@@ -1,5 +1,5 @@
 {
-	"target": "linux",
+	"target": "wasm",
 	"lastBuffer": "src/main.cpp",
 	"audio": {
 		"rate": 10000
@@ -697,6 +697,8 @@
 		"data/mission_3.i16": {},
 		"data/mission_4.i16": {},
 		"data/mission_5.i16": {},
+		"data/mission_6.i16": {},
+		"data/mission_7.i16": {},
 		"data/p0.i8": {},
 		"data/p1.i8": {},
 		"data/p10.i8": {},
@@ -907,8 +909,8 @@
 		"meshes/Jet.mtl": {},
 		"meshes/Jet.obj": {},
 		"meshes/Jet2.h": {},
-		"meshes/Jet2.obj": {},
 		"meshes/Jet2.mtl": {},
+		"meshes/Jet2.obj": {},
 		"meshes/NaturePack_051.h": {},
 		"meshes/NaturePack_061.h": {},
 		"meshes/NaturePack_068.h": {},
@@ -963,8 +965,8 @@
 		"meshes/naturePack_071.mtl": {},
 		"meshes/naturePack_071.obj": {},
 		"meshes/naturePack_074.mtl": {},
-		"meshes/naturePack_075.mtl": {},
 		"meshes/naturePack_074.obj": {},
+		"meshes/naturePack_075.mtl": {},
 		"meshes/naturePack_075.obj": {},
 		"meshes/naturePack_084.mtl": {},
 		"meshes/naturePack_084.obj": {},
@@ -998,6 +1000,13 @@
 		"meshes/watercraftPack_029.mtl": {},
 		"music/bensound-birthofahero.raw": {},
 		"scripts/mesh.js": {},
+		"server/Game.js": {},
+		"server/Player.js": {},
+		"server/data.js": {},
+		"server/games": {},
+		"server/hash.js": {},
+		"server/index.js": {},
+		"server/static": {},
 		"sound/bensound-birthofahero.mp3": {},
 		"sound/engine.h": {},
 		"sound/engine.ogg": {},
@@ -1034,13 +1043,6 @@
 		"src/ship.h": {},
 		"src/shop.h": {},
 		"src/world.h": {},
-		"server/Game.js": {},
-		"server/Player.js": {},
-		"server/data.js": {},
-		"server/games": {},
-		"server/hash.js": {},
-		"server/index.js": {},
-		"server/static": {},
 		"img-src/asteroids/a0.png": {
 			"PNGFlags": [
 				"binary=1",
@@ -1049,10 +1051,10 @@
 				"bpp=8"
 			]
 		},
-		"img-src/asteroids/a1.png": {},
 		"img-src/asteroids/a10.png": {},
 		"img-src/asteroids/a11.png": {},
 		"img-src/asteroids/a12.png": {},
+		"img-src/asteroids/a1.png": {},
 		"img-src/asteroids/a13.png": {},
 		"img-src/asteroids/a14.png": {},
 		"img-src/asteroids/a15.png": {},
@@ -1066,6 +1068,83 @@
 		"img-src/asteroids/a7.png": {},
 		"img-src/asteroids/a8.png": {},
 		"img-src/asteroids/a9.png": {},
+		"img-src/missions/mission_1.aseprite": {},
+		"img-src/missions/mission_1.i16": {},
+		"img-src/missions/mission_2.aseprite": {},
+		"img-src/missions/mission_1.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=0",
+				"binary=1",
+				"header=0",
+				"bpp=16"
+			]
+		},
+		"img-src/missions/mission_2.i16": {},
+		"img-src/missions/mission_2.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=0",
+				"binary=1",
+				"header=0",
+				"bpp=16"
+			]
+		},
+		"img-src/missions/mission_3.aseprite": {},
+		"img-src/missions/mission_3.i16": {},
+		"img-src/missions/mission_3.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=0",
+				"binary=1",
+				"header=0",
+				"bpp=16"
+			]
+		},
+		"img-src/missions/mission_4.aseprite": {},
+		"img-src/missions/mission_4.i16": {},
+		"img-src/missions/mission_4.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=0",
+				"binary=1",
+				"header=0",
+				"bpp=16"
+			]
+		},
+		"img-src/missions/mission_5.aseprite": {},
+		"img-src/missions/mission_5.i16": {},
+		"img-src/missions/mission_5.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=0",
+				"binary=1",
+				"header=0",
+				"bpp=16"
+			]
+		},
+		"img-src/missions/mission_6.aseprite": {},
+		"img-src/missions/mission_6.i16": {},
+		"img-src/missions/mission_6.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=0",
+				"binary=1",
+				"header=0",
+				"bpp=16"
+			]
+		},
+		"img-src/missions/mission_7.aseprite": {},
+		"img-src/missions/mission_7.i16": {},
+		"img-src/missions/mission_7.png": {
+			"PNGFlags": [
+				"automatic=1",
+				"isTransparent=0",
+				"binary=1",
+				"header=0",
+				"bpp=16"
+			]
+		},
 		"img-src/planets/p0.i8": {},
 		"img-src/planets/p0.png": {
 			"PNGFlags": [
@@ -1682,61 +1761,6 @@
 				"automatic=1"
 			]
 		},
-		"img-src/missions/mission_1.aseprite": {},
-		"img-src/missions/mission_1.i16": {},
-		"img-src/missions/mission_1.png": {
-			"PNGFlags": [
-				"automatic=1",
-				"isTransparent=0",
-				"binary=1",
-				"header=0",
-				"bpp=16"
-			]
-		},
-		"img-src/missions/mission_2.aseprite": {},
-		"img-src/missions/mission_2.i16": {},
-		"img-src/missions/mission_2.png": {
-			"PNGFlags": [
-				"automatic=1",
-				"isTransparent=0",
-				"binary=1",
-				"header=0",
-				"bpp=16"
-			]
-		},
-		"img-src/missions/mission_3.aseprite": {},
-		"img-src/missions/mission_3.i16": {},
-		"img-src/missions/mission_3.png": {
-			"PNGFlags": [
-				"automatic=1",
-				"isTransparent=0",
-				"binary=1",
-				"header=0",
-				"bpp=16"
-			]
-		},
-		"img-src/missions/mission_4.aseprite": {},
-		"img-src/missions/mission_4.i16": {},
-		"img-src/missions/mission_4.png": {
-			"PNGFlags": [
-				"automatic=1",
-				"isTransparent=0",
-				"binary=1",
-				"header=0",
-				"bpp=16"
-			]
-		},
-		"img-src/missions/mission_5.aseprite": {},
-		"img-src/missions/mission_5.i16": {},
-		"img-src/missions/mission_5.png": {
-			"PNGFlags": [
-				"automatic=1",
-				"isTransparent=0",
-				"binary=1",
-				"header=0",
-				"bpp=16"
-			]
-		},
 		"meshes/blender/Bullet.blend": {},
 		"meshes/blender/Bullet.blend1": {},
 		"meshes/blender/CarHatchback.blend": {},
@@ -1753,7 +1777,8 @@
 		"meshes/blender/Pine.blend": {},
 		"meshes/blender/Shroom.blend": {},
 		"server/games/Armadillo.schema": {},
-		"server/static/index.html": {}
+		"server/static/index.html": {},
+		"TASArmada.wasm.tmp4685e98": {}
 	},
 	"ideVersion": 10000,
 	"BUILDFlags": {

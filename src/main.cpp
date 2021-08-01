@@ -138,9 +138,13 @@ void nextMission() {
     gameState = GameState::EnterCutScene;
     updateMissionText();
     auto& mission = missions[universe.missionId];
-    ships[1].special = (mission.worldId == world && mission.npcFaction)
-        ? Ship::Special::Mission
-        : Ship::Special::Normal;
+    if (mission.worldId == world && mission.npcFaction) {
+        ships[1].special = Ship::Special::Mission;
+        if (ships[1].faction != mission.npcFaction)
+            ships[1].HP = 0;
+    } else {
+        ships[1].special = Ship::Special::Normal;
+    }
     Ship::player->addExp(universe.missionId * universe.missionId * 8);
 }
 
@@ -319,6 +323,7 @@ void updateStart(){
     backlight = 0;
     targetBacklight = 255;
     universe.load();
+    // universe.missionId = 5;
     updateMissionText();
     if (Ship::player->load()) {
         LOG("Loaded with exp ", Ship::player->exp, "\n");

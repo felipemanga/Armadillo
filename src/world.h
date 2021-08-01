@@ -115,6 +115,11 @@ constexpr inline const Mission missions[] = {
         .worldId = 2,
         .update = checkKillCount<20>
     },
+    {
+        .worldId = 3,
+        .npcFaction = 1,
+        .npcInteract = passMission
+    },
     {.message = "End"}
 };
 
@@ -178,8 +183,8 @@ constexpr inline World worlds[] = {
 // Mazion
     {.tile=bgFreyzeX672, .level=0},
 
-// "At‘us Zinges 144"
-    {.tile=bgMagmicZX41, .level=1},
+// "Atus"
+    {.tile=bgMagmicZX41, .level=2},
 
 // "Baanella"
     {.tile=bgMagmicZX41, .level=2},
