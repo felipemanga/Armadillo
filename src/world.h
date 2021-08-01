@@ -31,7 +31,7 @@ struct Mission {
 
 constexpr inline const WorldFeature spaceFeatures[] = {
     {{-14.0f, -13.0f}, "Seneus", 7, 0, 2},
-    {{509, 392}, "Mazion 7", 45, 2, 1},
+    {{509, 392}, "Mazion", 45, 2, 1},
     {{-658.0f, 1000}, "Atus", 2, 3, 1},
     {{29, 1700}, "Baanella", 3, 4, 1},
     {{167, -2320.0f}, "La Tashtronia", 4, 5, 2},
@@ -99,24 +99,23 @@ constexpr inline const Mission missions[] = {
         .npcFaction = 1,
         .npcInteract = passMission
     },
-    { // Defeat boss, Space (near Mazion 7)
+    { // Defeat boss, Space (near Mazion)
         .x = 500, .y = 200,
         .worldId = 1,
         .npcFaction = 2,
         .npcDied = passMission
     },
-    { // Liberate Moon, Mazion 7
-        .message = "Liberate Mazion 7",
+    { // Liberate Moon, Mazion
+        .message = "Fight: Mazion",
         .worldId = 2,
         .update = checkKillCount<10>
     },
-    {
-        .message = "End",
-        .npcFaction = 0,
-        .update = nullptr,
-        .npcDied = nullptr,
-        .npcInteract = nullptr
-    }
+    { // Liberate Moon part 2, Mazion
+        .message = "Part 2: Mazion",
+        .worldId = 2,
+        .update = checkKillCount<20>
+    },
+    {.message = "End"}
 };
 
 constexpr inline const u32 missionCount = sizeof(missions) / sizeof(missions[0]);
@@ -176,7 +175,7 @@ constexpr inline World worlds[] = {
         }
     },
 
-// Mazion 7
+// Mazion
     {.tile=bgFreyzeX672, .level=0},
 
 // "At‘us Zinges 144"
@@ -401,5 +400,5 @@ inline void missionNPCDied() {
 
 template<int amount>
 bool checkKillCount() {
-    return universe.worldKillCount[missions[universe.missionId].worldId] > amount;
+    return universe.worldKillCount[missions[universe.missionId].worldId] >= amount;
 }
